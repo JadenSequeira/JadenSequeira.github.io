@@ -30,7 +30,7 @@ The heart was assembled in a rigid holder with two molded Silicone 00-30 ballons
 
 The cardiac phantom was then imaged at the UBC MRI Research Facility using the 9.4 Tesla pre-clinical MRI. Some of the results are shown below. The heart was pulsing at 60 BPM at 30 psi as they provided the closest ejection fraction to normal pumping. Overall, the cardiac phantom successfully demonstrated pumping motion, close resemblance to interior anatomy of model, and MRI compatibility.
 
-
+![Image of Actuation](/images/img8.gif)
 
 A special thanks for all the help and support from the staff at the UBC Engineering Physics Project Lab, the Digital Lab, and the UBC MRI Research Center.
 
