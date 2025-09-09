@@ -18,7 +18,7 @@ First, the 3D model of the heart was imported into Meshmixer to create the molds
 
 Both molds were 3D printed in PLA using a BambuLabs X1 Carbon. After assembling the wax mold, a wireframe was placed inside the mold, the wax was poured in, and the mold was then placed in a freezer for 4 hours to set. A planned and careful approach towards mold removal was taken to minimize cracks. The wireframe helped maintain position of broken pieces - resulting in a simple fix using a soldering iron. The interior mold was placed in the exterior mold, and the Silicone 00-30 was poured into the mold and cured. After four hours, the exterior mold was removed and the interior mold was melted out, leaving a silicone heart.
 
-![Image of Molding Process](/images/img5.jpg){ width: 1000px; }
+<img src="/images/img5.jpg" width="1000">
 
 Overall, the process required 12 hours of hands-on work out of the 42 hours. In addition, it can be planned as shown below to be completed in 3 days depending on resources.
 
