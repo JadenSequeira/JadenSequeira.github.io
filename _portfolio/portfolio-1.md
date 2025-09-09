@@ -1,6 +1,6 @@
 ---
-title: "Portfolio item number 1"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+title: "The Cardiac Phantom"
+excerpt: "An anatomically accurate and pulsatile pediatric phantom for Cardiac MRI Training 1<br/><img src='/images/500x300.png'>"
 collection: portfolio
 ---
 
