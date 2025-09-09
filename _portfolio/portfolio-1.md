@@ -1,10 +1,9 @@
 ---
 title: "The Cardiac Phantom"
-excerpt: "An anatomically accurate and pulsatile pediatric phantom for Cardiac MRI Training <br/><img src='/images/img1.jpg'>"
+excerpt: "An anatomically accurate and pulsatile pediatric phantom for Cardiac MRI Training <br/><img src='/images/500x300.png'>"
 collection: portfolio
 ---
 
-<br/><img src='/images/img1.jpg'>
 
 Sponsored by the Digital Lab (link), an organization that works in collaboration with Doctors at BC Children's Hospital, I set out to develop an anatomically accurate and pulsatile pediatric cardiac phantom for Cardiac MRI Training. The overarching goal of this project is to create a fabrication pipeline for pediatric cardiac pathologies, such as Congenital Heart Defects, to help train technicians and radiologists in identifying these abnormalities. The main requirements of the project are illustrated above. 
 
