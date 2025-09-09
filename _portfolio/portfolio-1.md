@@ -1,6 +1,6 @@
 ---
 title: "The Cardiac Phantom"
-excerpt: "An anatomically accurate and pulsatile pediatric phantom for Cardiac MRI Training <br/><img src='/images/500x300.png'>"
+excerpt: "An anatomically accurate and pulsatile pediatric phantom for Cardiac MRI Training <br/><img src='/images/img1.jpg'>"
 collection: portfolio
 ---
 
