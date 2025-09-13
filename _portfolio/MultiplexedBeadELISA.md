@@ -4,10 +4,6 @@ excerpt: "Software to expand the capabilities of fluorescent microscopy in singl
 collection: portfolio
 ---
 
-# Multiplexed ELISA on a Bead Assays 
-### Developed by Jaden Sequeira
-
-
 Microscopy based multiplexed assays are an important tool for comparing stem cell
 derived beta cells and donor beta cells through their secretion profiles. The limited fluorescent
 range used by microscopes limits multiplexed assays to the detection of 3 to 4 four biomolecules.
@@ -27,7 +23,7 @@ and more recently, pancreatic beta cell transplants. Donor beta cells are in sho
 a critical need for new beta cells sources. Recent research has focussed on the differentiation 
 and genetic engineering of pluripotent stem cells into stem cell derived beta cells (SCβ) to be used as a new source for beta cell transplants. 
 
-![alt text](Images/Image1.JPG)
+![alt text](images/Image1.JPG)
 
 
 Recently, nanowell technology and fluorescent microscopy was used to investigate
@@ -39,7 +35,7 @@ hormone secretion levels. This will help in understanding if SCβ cells provide 
 standards of donor cells, or if alternative methods such as secretion-based cell
 selection if needed.
 
-![alt text](Images/Image2.JPG)
+![alt text](images/Image2.JPG)
 
 Multiplexed single cell secretion assays can be used to profile donor and stem cell
 derived islet cells through their secretion of insulin, glucagon, and somatostatin. This can be
@@ -74,7 +70,7 @@ fluorophores - resulting in the detection of up to four biomolecules. Table 1 pr
 of an assay setup for sensing insulin, glucagon, and somatostatin.
 
 
-![alt text](Images/Image3.JPG)
+![alt text](images/Image3.JPG)
 
 Segmentation is only the first part of the solution towards increasing the multiplexing
 capacity of microscopy-based assays through different bead sizes.
@@ -83,7 +79,7 @@ intensities for each bead size in each nanowell. Fluorescent intensities of each
 will be used along with standard curves to determine the concentration of the biomolecules
 secreted in each nanowell.
 
-![alt text](Images/Image4.JPG)
+![alt text](images/Image4.JPG)
 
 
 ## Software Overview
@@ -118,30 +114,32 @@ TensorFlow package due to its specific version requirement.
 ## Software Functions
 ### 1. Nanowell Cropping
 
-![alt text](Images/Image6.JPG)
-![alt text](Images/Image7.JPG)
+![alt text](images/Image6.JPG)
+![alt text](images/Image7.JPG)
+
+
 
 ### 2. Quality Inspection of Training Data
-![alt text](Images/Image14.JPG)
+![alt text](images/Image14.JPG)
 ### 3. Training Data Generation
-![alt text](Images/Image8.JPG)
+![alt text](images/Image8.JPG)
 ### 4. Image Augmentation (Increasing Training Data)
-![alt text](Images/Image9.JPG)
+![alt text](images/Image9.JPG)
 ### 5. Segmentation Training
-![alt text](Images/Image10.JPG)
+![alt text](images/Image10.JPG)
 ### 6. Segmentation Testing
-![alt text](Images/Image11.JPG)
+![alt text](images/Image11.JPG)
 ### 7. Segmentation Prediction
-![alt text](Images/Image12.JPG)
+![alt text](images/Image12.JPG)
 ### 8. Standard Curve Generation
-![alt text](Images/Image13.JPG)
+![alt text](images/Image13.JPG)
 ### 9. Re-stitching Segmented Nanowells (Plotting)
-![alt text](Images/Image15.JPG)
+![alt text](images/Image15.JPG)
 ### 10. Update - Nikon Instrument Software (NIS) Compatability
 The software can now store 16bit Tiff images of the separated fluorescences of 2.8um and 4.5um beads in folders NIS28 and NIS45 respectively, after calibration or prediction.
 This way users can seperate the beads with the same fluorescence into separate fluorecence images for each bead size and input each image to measure fluorescence using NIS. 
 
-![alt text](Images/Image5.JPG)
+![alt text](images/Image5.JPG)
 
 (Left) Image of the fluorescent nanowell with 2.8um and 4.5um beads – background
 fluorescence is apparent in this image. (Middle) Image of the same nanowell with only the 2.8um
