@@ -23,7 +23,7 @@ and more recently, pancreatic beta cell transplants. Donor beta cells are in sho
 a critical need for new beta cells sources. Recent research has focussed on the differentiation 
 and genetic engineering of pluripotent stem cells into stem cell derived beta cells (SCβ) to be used as a new source for beta cell transplants. 
 
-![alt text](images/Image1.JPG)
+![alt text](/images/Image1.JPG)
 
 
 Recently, nanowell technology and fluorescent microscopy was used to investigate
@@ -35,7 +35,7 @@ hormone secretion levels. This will help in understanding if SCβ cells provide 
 standards of donor cells, or if alternative methods such as secretion-based cell
 selection if needed.
 
-![alt text](images/Image2.JPG)
+![alt text](/images/Image2.JPG)
 
 Multiplexed single cell secretion assays can be used to profile donor and stem cell
 derived islet cells through their secretion of insulin, glucagon, and somatostatin. This can be
@@ -70,7 +70,7 @@ fluorophores - resulting in the detection of up to four biomolecules. Table 1 pr
 of an assay setup for sensing insulin, glucagon, and somatostatin.
 
 
-![alt text](images/Image3.JPG)
+![alt text](/images/Image3.JPG)
 
 Segmentation is only the first part of the solution towards increasing the multiplexing
 capacity of microscopy-based assays through different bead sizes.
@@ -79,7 +79,7 @@ intensities for each bead size in each nanowell. Fluorescent intensities of each
 will be used along with standard curves to determine the concentration of the biomolecules
 secreted in each nanowell.
 
-![alt text](images/Image4.JPG)
+![alt text](/images/Image4.JPG)
 
 
 ## Software Overview
@@ -114,32 +114,111 @@ TensorFlow package due to its specific version requirement.
 ## Software Functions
 ### 1. Nanowell Cropping
 
-![alt text](images/Image6.JPG)
-![alt text](images/Image7.JPG)
+![alt text](/images/Image6.JPG)
+![alt text](/images/Image7.JPG)
 
-
+This cropping functionality is developed to work with the nanowell images which have
+individual nanowells that are slightly smaller 160 x 160 pixels in size. The U-Net structure is
+also only compatible with nanowells smaller than 160x160 pixels. If larger nanowells are used,
+the internal code that sets the cropping size of 160x160 pixels must be changed. This change will
+also lead to significantly longer training times
 
 ### 2. Quality Inspection of Training Data
-![alt text](images/Image14.JPG)
+![alt text](/images/Image14.JPG)
+
+Once the nanowells are cropped for training and testing, the Inspector and Training Tab should
+be chosen. Please ensure there are at least 3,000-15,000 cropped nanowell images to ensure that
+after inspection there is enough training data.
+
 ### 3. Training Data Generation
-![alt text](images/Image8.JPG)
-### 4. Image Augmentation (Increasing Training Data)
-![alt text](images/Image9.JPG)
-### 5. Segmentation Training
-![alt text](images/Image10.JPG)
-### 6. Segmentation Testing
-![alt text](images/Image11.JPG)
-### 7. Segmentation Prediction
-![alt text](images/Image12.JPG)
-### 8. Standard Curve Generation
-![alt text](images/Image13.JPG)
-### 9. Re-stitching Segmented Nanowells (Plotting)
-![alt text](images/Image15.JPG)
-### 10. Update - Nikon Instrument Software (NIS) Compatability
+![alt text](/images/Image8.JPG)
+
+To train the U-Net model, it is suggested that at least 5,000-10,000 training image pairs
+(brightfield and ground truth pairs) are provided to the model. To achieve this, the training
+images can be augmented by rotation or reflection across an axis to create new training data
+images. For instance, applying two augmentations (90-degree rotation and flip about vertical
+axis) will lead to a tripling of the training data set size. This makes it possible to train the model
+with only 1,000 – 4,000 images after the quality inspection. However, since these images are not
+exactly independent, it is suggested that at least 6,000 images are used when augmentations are
+used. Please note that before augmentation, the image dataset needs to be split up into training
+and testing datasets. It is suggested that the testing dataset size be about 10%-30% of the dataset
+size (before augmentation). The larger the testing dataset (e.g. 500-1000 testing image pairs), the
+more representative the testing will be. 
+
+### 4. Image Augmentation (Increasing Training Data) and Training
+![alt text](/images/Image9.JPG)
+
+![alt text](/images/Image10.JPG)
+
+To train the U-Net model, it is suggested that at least 5,000-10,000 training image pairs
+(brightfield and ground truth pairs) are provided to the model. To achieve this, the training
+images can be augmented by rotation or reflection across an axis to create new training data
+images. For instance, applying two augmentations (90-degree rotation and flip about vertical
+axis) will lead to a tripling of the training data set size. This makes it possible to train the model
+with only 1,000 – 4,000 images after the quality inspection. However, since these images are not
+exactly independent, it is suggested that at least 6,000 images are used when augmentations are
+used. Please note that before augmentation, the image dataset needs to be split up into training
+and testing datasets. It is suggested that the testing dataset size be about 10%-30% of the dataset
+size (before augmentation). The larger the testing dataset (e.g. 500-1000 testing image pairs), the
+more representative the testing will be. 
+
+### 5. Segmentation Testing
+![alt text](/images/Image11.JPG)
+
+The testing will provide Dice coefficients for the 2.8um and 4.5um bead segmentation. The
+average Dice coefficient is computed and if above 0.7, it is acceptable. In the case the average
+Dice coefficients are below 0.7, the boxplots outputted by the software which describe the spread
+of the Dice coefficients for each nanowell should be analyzed regarding the general spread.
+Generally, if the average is significantly below 0.7, or if there is a large spread or a group of
+outliers near 0, then the training data set should be increased by acquiring new training images.
+
+### 6. Segmentation Prediction
+![alt text](/images/Image12.JPG)
+
+The main purpose of prediction is to measure the fluorescent intensities of the different bead
+sizes in each nanowell and apply the standard curve from calibration to translate the fluorescent
+intensities into biomolecule concentrations. When a cell is present in the nanowell, this becomes
+a secretion assay and when multiple biomolecules are being detected (different bead sizes or
+fluorescence), this becomes a multiplexed secretion assay. The process is the exact same as
+calibration except that the same “thresh” setting used to create the standard curve must be used
+when predicting. The prediction process is repeated for every 2 biomolecules, so for a prediction
+of 4 different biomolecules, the process must be conducted twice.
+
+### 7. Standard Curve Generation
+![alt text](/images/Image13.JPG)
+
+The main purpose of calibration is to create a standard curve that relates fluorescent intensity and
+biomolecule concentration. This standard curve can then be coupled with predicted fluorescent
+intensities of beads in a secretion assay to determine the concentration of the biomolecule
+secreted. Microwells are given different biomolecule concentrations which result in different
+fluorescence intensities due to these different concentrations. Single biomolecule calibration will
+be defined as the calibration of a single biomolecule using different concentrations in different
+microwells and no other biomolecule present. Multi Biomolecule calibration is used to calibrate
+with two biomolecules present at different concentrations – its main purpose is to determine if
+the biomolecules interact. Interaction means that biomolecule concentrations do have
+independent effects on fluorescent intensity. If they are not independent, then techniques of
+biomolecule detection should be re-examined to ensure that there is no cross binding occurring
+with the different detection beads.
+
+### 8. Re-stitching Segmented Nanowells (Plotting)
+![alt text](/images/Image15.JPG)
+
+Plotting combines data regarding nanowell locations in microscopy images and their respective
+fluorescent intensities. It also stitches the individual nanowells with normalized intensities to
+display the intensity distribution in the large microscopy image. To use this function, either
+calibration or prediction must be conducted. This function will combine FluoroAvgResults.csv
+and NanowellLocations.csv into CombinedResults.csv. This organizes all the fluorescent
+measurements and XY coordinates of the cropped nanowell images into a single spreadsheet.
+Finally, the function uses the coupled data to stitch the individual nanowells with normalized
+intensities together and overlay with the TIFF images to show the intensity distributions in the
+microwells.
+
+### 9. Update - Nikon Instrument Software (NIS) Compatability
 The software can now store 16bit Tiff images of the separated fluorescences of 2.8um and 4.5um beads in folders NIS28 and NIS45 respectively, after calibration or prediction.
 This way users can seperate the beads with the same fluorescence into separate fluorecence images for each bead size and input each image to measure fluorescence using NIS. 
 
-![alt text](images/Image5.JPG)
+![alt text](/images/Image5.JPG)
+
 
 (Left) Image of the fluorescent nanowell with 2.8um and 4.5um beads – background
 fluorescence is apparent in this image. (Middle) Image of the same nanowell with only the 2.8um
